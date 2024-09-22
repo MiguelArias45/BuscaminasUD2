@@ -1,7 +1,7 @@
 package com.ud.aplication.Logic
 
 class Tablero {
-    private companion object {
+    public companion object {
         var tablero: Array<Array<Casilla>>? = null
 
         fun inicializarTablero(f: Int, c: Int) {

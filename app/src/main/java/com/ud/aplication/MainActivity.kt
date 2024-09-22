@@ -3,26 +3,24 @@ package com.ud.aplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.runtime.*
 import com.ud.aplication.Views.DificultadScreen
 import com.ud.aplication.Views.GameScreen
 import com.ud.aplication.Views.ResultScreen
+import androidx.compose.runtime.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainContent()
+            MainAppContent() // Cambié el nombre aquí
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainContent() {
+fun MainAppContent() { // Cambié el nombre aquí
     var gameState by remember { mutableStateOf("menu") }
-    var gameParameters by remember { mutableStateOf(Triple(10, 10, 10)) } // Fila, Columna, Minas
+    var gameParameters by remember { mutableStateOf(Triple(10, 10, 10)) }
 
     when (gameState) {
         "menu" -> DificultadScreen { f, c, m ->
@@ -35,3 +33,4 @@ fun MainContent() {
         "result" -> ResultScreen(hasWon = true, onPlayAgain = { gameState = "game" }, onReturnToMenu = { gameState = "menu" })
     }
 }
+
