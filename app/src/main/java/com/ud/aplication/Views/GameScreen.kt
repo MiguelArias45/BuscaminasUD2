@@ -1,6 +1,7 @@
 package com.ud.aplication.Views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
@@ -11,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ud.aplication.Logic.Casilla1
+import com.ud.aplication.Logic.Casilla
 import com.ud.aplication.Logic.Tablero
 import com.ud.aplication.Logic.Operaciones
 import androidx.compose.material3.Text
@@ -25,9 +26,9 @@ fun GameScreen(f: Int, c: Int, m: Int, onGameEnd: (Boolean) -> Unit) {
 
     // Ajustar el tamaño de las casillas según la dificultad
     val cellSize = when (f) {
-        8 -> 35.dp // Tamaño para fácil
-        16 -> 30.dp // Tamaño para intermedio
-        24 -> 25.dp // Tamaño para difícil
+        8 -> 40.dp // Tamaño para fácil
+        16 -> 35.dp // Tamaño para intermedio
+        24 -> 30.dp // Tamaño para difícil
         else -> 40.dp // Tamaño por defecto
     }
 
@@ -52,7 +53,8 @@ fun GameScreen(f: Int, c: Int, m: Int, onGameEnd: (Boolean) -> Unit) {
                         Box(
                             modifier = Modifier
                                 .size(cellSize)
-                                .background(Color.LightGray) // Color más claro
+                                .background(Color.LightGray) // Color de fondo gris claro
+                                .border(1.dp, Color.Black) // Contorno negro uniforme
                                 .combinedClickable(
                                     onClick = {
                                         if (isGameOver) return@combinedClickable
@@ -80,9 +82,15 @@ fun GameScreen(f: Int, c: Int, m: Int, onGameEnd: (Boolean) -> Unit) {
                                 )
                         ) {
                             val displayText = when (casilla.getEstado()) {
-                                "levantada" -> casilla.getValor().toString() // Asegúrate de convertir a String
+                                "levantada" -> {
+                                    if (casilla.getValor() == 100) {
+                                        "💣" // Emoji para la mina
+                                    } else {
+                                        casilla.getValor().toString() // Mostrar valor cuando está levantada
+                                    }
+                                }
                                 "marcada" -> "🚩" // Emoji para la bandera
-                                else -> "?" // Casilla oculta
+                                else -> "" // Casilla oculta sin texto
                             }
                             Text(
                                 text = displayText,

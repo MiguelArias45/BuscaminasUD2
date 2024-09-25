@@ -1,7 +1,6 @@
 package com.ud.aplication.Logic
 
-
-class Casilla1 {
+class Casilla {
     private var valor = 0
     private var estado = "oculta"
 
@@ -21,3 +20,4 @@ class Casilla1 {
         return estado
     }
 }
+
