@@ -33,4 +33,3 @@ fun MainAppContent() { // Cambié el nombre aquí
         "result" -> ResultScreen(hasWon = true, onPlayAgain = { gameState = "game" }, onReturnToMenu = { gameState = "menu" })
     }
 }
-

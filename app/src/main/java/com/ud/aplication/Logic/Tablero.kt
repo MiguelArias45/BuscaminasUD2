@@ -2,10 +2,10 @@ package com.ud.aplication.Logic
 
 class Tablero {
     public companion object {
-        var tablero: Array<Array<Casilla>>? = null
+        var tablero: Array<Array<Casilla1>>? = null
 
         fun inicializarTablero(f: Int, c: Int) {
-            tablero = Array(f) { Array(c) { Casilla() } }
+            tablero = Array(f) { Array(c) { Casilla1() } }
         }
 
         fun generarMinas(f: Int, c: Int, m: Int) {
@@ -28,7 +28,7 @@ class Tablero {
             }
         }
 
-        fun getTablero(f: Int, c: Int, m: Int): Array<Array<Casilla>> {
+        fun getTablero(f: Int, c: Int, m: Int): Array<Array<Casilla1>> {
             if (tablero == null) {
                 inicializarTablero(f, c)
                 generarMinas(f, c, m)

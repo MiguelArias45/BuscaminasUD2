@@ -1,7 +1,8 @@
 package com.ud.aplication.Logic
 
+
 object Operaciones {
-    fun mostrarCerosAdyacentes(f: Int, c: Int, tablero: Array<Array<Casilla>>) {
+    fun mostrarCerosAdyacentes(f: Int, c: Int, tablero: Array<Array<Casilla1>>) {
         tablero[f][c].setEstado("levantada")
         for (ft in (f - 1)..(f + 1)) {
             for (ct in (c - 1)..(c + 1)) {
@@ -17,9 +18,9 @@ object Operaciones {
         }
     }
 
-    fun mostrarMinas(tablero: Array<Array<Casilla>>) {
+    fun mostrarMinas(tablero: Array<Array<Casilla1>>) {
         for (i in tablero.indices) {
-            for (j in tablero[0].indices) {
+            for (j in tablero[i].indices) {
                 if (tablero[i][j].getValor() == 100) {
                     tablero[i][j].setEstado("mina reventada")
                 }
